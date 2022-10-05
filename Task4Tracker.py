@@ -8,21 +8,6 @@ import cv2 as cv
 #
 #   Code modified from Changing Colorspaces and Contour Features
 #
-#
-#   1.HSV is better since the mask captures the highlights better. This cannot be done with GBR since the
-#   bottle is turquoise (low red value) and highlights are high values of all.
-#   The range for HSV small in hue and large in saturation and value. GBR has a large green range,
-#   and small blue and red ranges.
-#
-#
-#   2. HSV has variable value range, so it can absorb the value changes easily. GBR ties color with value so
-#   it struggles with lower light. GBR requires more careful range changes for different lighting conditions.
-#
-#
-#   3. The phone display has difficulty tracking at low brightness. Mid to high brightness is necessary for
-#   reliable tracking.
-#
-#
 ##################################################################################
 
 cap = cv.VideoCapture(0)
@@ -30,7 +15,7 @@ cap = cv.VideoCapture(0)
 while(True):
     # Capture frame
     ret, frame = cap.read()
-    HSV = False
+    HSV = True
     if HSV == True:
         # Convert BGR to HSV
         frameColor = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
@@ -40,7 +25,7 @@ while(True):
     else:
         #Keep color the same
         frameColor = frame
-        #Range of bottle color for GBR
+        #Range of bottle color for BGR
         lower_blue = np.array([100, 60, 0])
         upper_blue = np.array([255, 255, 60])
 
