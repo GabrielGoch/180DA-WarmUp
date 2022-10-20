@@ -43,7 +43,7 @@ client.loop_start()
 while True: 
   pass
 # use subscribe() to subscribe to a topic and receive messages. 
-
+client.subscribe()
 # use publish() to publish messages to the broker. 
 
 # use disconnect() to disconnect from the broker. 
